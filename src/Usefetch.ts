@@ -1,9 +1,8 @@
-import { url } from "inspector";
 import { useState, useEffect } from "react";
 
 const useFetch = (url: string) => {
 
-    const [data, setData] = useState<Blog[]>([] || null)
+    const [data, setData] = useState<Blog[]>()
     const [isPending, setIsPending] = useState(true);
     const [isError, setError] = useState(null);
 

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 
 const BlogList: React.FC<BlogListProps> = ({ blogs, title }) => {
   
@@ -8,8 +9,11 @@ const BlogList: React.FC<BlogListProps> = ({ blogs, title }) => {
       <h1>{ title }</h1>
       {blogs.map((blog) =>(
         <div className="blog-preview" key={blog.id}>
-          <h2>{blog.title}</h2>
-          <p>Written by {blog.author}</p>
+          <Link to={`blogs/${blog.id}`}>
+            <h2>{blog.title}</h2>
+            <p>Written by {blog.author}</p>
+          </Link>
+          
         </div>
       ))}
     </div>
