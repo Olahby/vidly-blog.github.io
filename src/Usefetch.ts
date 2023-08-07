@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import { Blog } from "./type";
 
-const useFetch = (url: string) => {
+const useFetch = <T> (url: string) => {
 
-    const [data, setData] = useState<Blog[]>()
+    const [data, setData] = useState<T | null>(null)
     const [isPending, setIsPending] = useState(true);
     const [isError, setError] = useState(null);
 

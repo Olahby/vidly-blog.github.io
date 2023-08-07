@@ -3,6 +3,7 @@ import Home from './Home';
 import Navbar from './Navbar';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
+import ErrorPage from './errorPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route path="/create" component={Create} />
               <Route path="/blogs/:id" component={BlogDetails} />
+              <Route path="*" component={ErrorPage} />
             </Switch>
           </div>
         </div>

@@ -1,5 +1,6 @@
 // types.d.ts
-type Blog = {
+export type Blog = {
+    find(arg0: (blog: any) => boolean): unknown;
     title: string;
     body: string;
     author: string;
@@ -12,4 +13,5 @@ type Blog = {
     // status: 'loading' | 'error';
     // handleDelete: (id: number) => void;
   };
+  
   

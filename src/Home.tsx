@@ -1,12 +1,12 @@
-import { type } from "os";
 import BlogList from "./Bloglist";
 import useFetch from "./Usefetch";
+import { Blog } from "./type";
 
 
 
 
 const Home: React.FC = () => {
-    const {data: blogs, isPending, isError} = useFetch(' http://localhost:8000/blogs');
+    const {data: blogs, isPending, isError} = useFetch<Blog[]>(' http://localhost:8000/blogs');
 
 
     return ( 

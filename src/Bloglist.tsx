@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom";
+import { BlogListProps } from "./type";
 
 const BlogList: React.FC<BlogListProps> = ({ blogs, title }) => {
   
