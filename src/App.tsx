@@ -1,13 +1,14 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import Navbar from './Navbar';
-import Create from './Create';
-import BlogDetails from './BlogDetails';
-import ErrorPage from './errorPage';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./Home";
+import Navbar from "./Navbar";
+import Create from "./Create";
+import BlogDetails from "./BlogDetails";
+import ErrorPage from "./errorPage";
 
 function App() {
   return (
-    <><Router>
+    <>
+      <Router>
         <div className="App">
           <Navbar />
           <div className="content">

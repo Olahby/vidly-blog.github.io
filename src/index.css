@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* base styles */
 * {
   margin: 0;
@@ -102,6 +105,9 @@
   cursor: pointer;
 }
 
+.create textarea {
+  resize: none;
+}
 .not-found a{
   color: #18428C;
   font-size: 20px;

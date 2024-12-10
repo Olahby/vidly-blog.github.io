@@ -1,24 +1,21 @@
-import React from "react"
+import React from "react";
 import { Link } from "react-router-dom";
 import { BlogListProps } from "./type";
 
 const BlogList: React.FC<BlogListProps> = ({ blogs, title }) => {
-  
-
-  return ( 
+  return (
     <div className="blog-list">
-      <h1>{ title }</h1>
-      {blogs.map((blog) =>(
+      <h1>{title}</h1>
+      {blogs.map((blog) => (
         <div className="blog-preview" key={blog.id}>
           <Link to={`blogs/${blog.id}`}>
             <h2>{blog.title}</h2>
             <p>Written by {blog.author}</p>
           </Link>
-          
         </div>
       ))}
     </div>
   );
-}
- 
+};
+
 export default BlogList;

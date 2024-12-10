@@ -1,32 +1,44 @@
 import { useState, useEffect } from "react";
-import { Blog } from "./type";
 
-const useFetch = <T> (url: string) => {
+const useFetch = <T>(url: string, options?: RequestInit) => {
+  const [data, setData] = useState<T | null>(null);
+  const [isPending, setIsPending] = useState(true);
+  const [isError, setError] = useState<string | null>(null);
 
-    const [data, setData] = useState<T | null>(null)
-    const [isPending, setIsPending] = useState(true);
-    const [isError, setError] = useState(null);
+  useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
+    const fetchData = async () => {
+      setIsPending(true);
+      setError(null);
 
-    useEffect(() => {
-        fetch(url)
-        .then(res => {
-            if(!res.ok) {
-                throw Error("Could not fetch data for that resource.");
-            }
-            return res.json();
-        })
-        .then(data => {
-            setData(data);
-            setIsPending(false);
-            setError(null)
-        })
-        .catch(err => {
-            setError(err.message); 
-        })
-    }, [url])
-   
-    return {data, isPending, isError};
-}
- 
+      try {
+        const response = await fetch(url, { ...options, signal });
+
+        if (!response.ok) {
+          throw new Error("Could not fetch data for that resource.");
+        }
+
+        const res = await response.json();
+        setData(res);
+      } catch (err: any) {
+        if (err.name !== "AbortError") {
+          setError(err.message || "An unknown error occurred.");
+        }
+      } finally {
+        setIsPending(false);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      abortController.abort(); // Cleanup fetch on component unmount.
+    };
+  }, [url, options]);
+  
+  return { data, isPending, isError };
+};
+
 export default useFetch;
